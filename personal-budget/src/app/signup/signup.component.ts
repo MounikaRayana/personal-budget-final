@@ -21,30 +21,16 @@ export class SignupComponent implements OnInit {
 
   public userData = [];
 
-  
+
   constructor(private http:HttpClient,private router:Router,public _dataService: DataService, private toastr: ToastrService,private notifyService : NotificationService) { }
-  
- 
 
   ngOnInit(): void {
   }
-  
- 
-
-
-  duplicateUserName(){
-    alert('User already exists')
-  }
-
-  incompleteDetails(){
-    alert('Please enter all the fields')
-  }
- 
 
   loginFunction(){
     let record = {};
     record['username'] = this.username;
-    record['password'] = this.password;    
+    record['password'] = this.password;
     record['email'] = this.email;
     record['repassword'] = this.repassword;
     for(let i=0;i<this.userData.length;i++){
@@ -63,7 +49,7 @@ export class SignupComponent implements OnInit {
   registrationProcess(){
     let record = {};
     record['username'] = this.username;
-    record['password'] = this.password;    
+    record['password'] = this.password;
     record['email'] = this.email;
     record['repassword'] = this.repassword;
     if(this.password !=this.repassword){
@@ -76,7 +62,6 @@ export class SignupComponent implements OnInit {
         alert('Please enter all the fields')
         return;
       }else{
-        console.log("In else")
       this._dataService.userSignUp(record)
         .subscribe(res =>{
           this.username = "";
@@ -85,8 +70,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         err =>{
-          
         })
-    }    
+    }
   }
 }

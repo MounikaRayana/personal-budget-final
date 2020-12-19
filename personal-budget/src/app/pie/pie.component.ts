@@ -28,8 +28,7 @@ export class PieComponent implements OnInit {
     ngOnInit(): void {
       this.loggedInUserName = this._dataService.loggedInUserName;
     this._dataService.getData(this.loggedInUserName)
-      .subscribe((res: any) => {   
-        console.log(res);
+      .subscribe((res: any) => {
         this.data = res;
         this.createSvg();
         this.createColors();

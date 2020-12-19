@@ -27,14 +27,13 @@ export class AddbudgetComponent implements OnInit {
     this.toastr.error('Expense already exists. Please add one with a new name','Error');
   }
 
-  incompleteDetails(){
+  incompleteUserInfo(){
     this.toastr.warning('Please enter all the fields','Warning');
   }
 
   randomColorGen(){
     let randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
-    console.log(randomColor)
-    return randomColor;    
+    return randomColor;
   }
 
   sendExpense(){
@@ -47,28 +46,25 @@ export class AddbudgetComponent implements OnInit {
     record['username'] = this._dataService.loggedInUserName;
 
     if(!this.budget || !this.maxbudget || !this.title){
-      this.incompleteDetails();
+      this.incompleteUserInfo();
       return;
     }
     else{
     this._dataService.addBudgetdata(record)
       .subscribe(data =>{
-        console.log(data);
         this.budget = null;
         this.maxbudget = null;
-        this.title = "";   
-        this.expenseAddToast(); 
+        this.title = "";
+        this.expenseAddToast();
         this.ngZone.run(() => {
-          console.log("Running ngZone")
           this.router.navigate(['/homepage']);
         });
       },
       err => {
-        console.log("Same title already exists");
         this.duplicateExpenseTitle();
         this.title = "";
-      })             
+      })
   }
-}  
+}
 
 }

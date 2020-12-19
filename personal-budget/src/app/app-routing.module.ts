@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AboutComponent } from './about/about.component';
 import { P404Component } from './p404/p404.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent} from './signup/signup.component';
 import {AddbudgetComponent} from './addbudget/addbudget.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent,
-    pathMatch : 'full' 
+    pathMatch : 'full'
   },
   {
     path: 'about',
@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
-     
+
   },
   {
     path: 'contact',
@@ -30,16 +30,16 @@ const routes: Routes = [
   },
   {
     path: 'homepage',
-    component: HomepageComponent,
-    pathMatch: 'full'  
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
-    path: 'signup',
+    path: 'sign-up',
     component: SignupComponent,
     pathMatch : 'full'
   },
   {
-    path: 'addbudget',
+    path: 'budget-add',
     component: AddbudgetComponent
   },
   {

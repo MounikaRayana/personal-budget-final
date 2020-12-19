@@ -1,0 +1,45 @@
+
+    <main class="container center" id = "main">
+
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <!-- This is an SEO Change -->
+          <meta name="description" content="Follow the app for budget management">
+
+          <title>Personal Budget Application</title>
+      </head>
+
+      <div class="page-area">
+
+        <div class="container">
+          <div class="myButton">
+              <button (click)="addBudgetExpense()">Add New Expense</button>
+          </div>
+      </div>
+
+          <article>
+              <h1>Current expense data</h1>
+              <p>
+                  <canvas id="myChart" width="400" height="400"></canvas>
+              </p>
+          </article>
+          <pb-article>
+              <h1>Maximum Expense data</h1>
+              <div>
+                  <canvas id="maxbudgetpie" width="400" height="400"></canvas>
+                  <pb-maxbudgetpie></pb-maxbudgetpie>
+              </div>
+          </pb-article>
+
+          <article id="barchart">
+          <h1>compare the monthly expenses with maximum budget limit values</h1>
+          <figure id="bar">
+              <pb-bar></pb-bar>
+          </figure>
+      </article>
+
+      </div>
+
+    </main>
+

@@ -17,37 +17,24 @@ export class LoginPageComponent implements OnInit {
   isUserLoggedIn = new Subject<boolean>();
 
   constructor(private router: Router,public _dataService: DataService,public toastr:ToastrService) {
-    this.isUserLoggedIn.next(false);      
+    this.isUserLoggedIn.next(false);
    }
 
   ngOnInit(): void {
   }
 
-  signupFunction(){
-    this.router.navigate(['/signup'])
+  signUp(){
+    this.router.navigate(['/sign-up'])
   }
 
 
-  enterAllDetails(){
-    alert('Please enter all the details')
-    console.log("in");
-  }
-  loginSuccessful(){
-    // this.toastr.success('Logged In','Success');
-  }
-
-  loginFailure(){
-    // this.toastr.error('Invalid Credentials. Please enter valid credentials','Failure');
-  }
-  loginFunction(){
+  signIn(){
     let record = {};
     record['username'] = this.username;
     record['password'] = this.password;
-    console.log(JSON.stringify(record));
-    
+
     if(!this.username || !this.password){
-      this.enterAllDetails();
-      console.log("UserName or password incorrect");
+      alert('You need to enter all the details');
     }else{
       this._dataService.userLogin(record);
     }

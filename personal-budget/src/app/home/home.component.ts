@@ -6,24 +6,16 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'pb-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  selector: 'pb-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class HomepageComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   public dataSource = {
     datasets: [{
         data: [],
         backgroundColor : [
-          '#ffcd56',
-          '#ff6384',
-          '#36a2eb',
-          '#fd6b19',
-          '#808000',
-          '#E74C3C ',
-          '#A569BD ',
-          '#33FFE0'
             ]
     }],
 
@@ -31,16 +23,15 @@ export class HomepageComponent implements OnInit {
 
     ]
 };
-public loggedInUserName:any;
+public loggedInUser:any;
 
 constructor(private _dataService : DataService,private router:Router) { }
 
 ngOnInit(): void {
 
-this.loggedInUserName = this._dataService.loggedInUserName;
-this._dataService.getData(this.loggedInUserName)
+this.loggedInUser = this._dataService.loggedInUserName;
+this._dataService.getData(this.loggedInUser)
 .subscribe((res: any) => {
-  console.log(res);
   for (let i = 0; i < res.length; i++) {
    this.dataSource.datasets[0].data[i] = res[i].budget;
    this.dataSource.labels[i] = res[i].title;
@@ -48,8 +39,6 @@ this._dataService.getData(this.loggedInUserName)
    this.createChart();
   }
 });
-
-
 }
 
 createChart(){
@@ -60,8 +49,8 @@ createChart(){
   })
 }
 
-AddBudget(){
-  this.router.navigate(['/addbudget']);
+addBudgetExpense(){
+  this.router.navigate(['/budget-add']);
 }
 
 callNgOnInit(){

@@ -13,12 +13,12 @@ export class MaxbudgetpieComponent implements OnInit {
   public dataSource = {
     datasets: [{
         data: [],
-        backgroundColor : [           
+        backgroundColor : [
         ]
     }],
 
     labels: [
-        
+
     ]
   }
   public loggedInUserName:any;
@@ -30,7 +30,6 @@ export class MaxbudgetpieComponent implements OnInit {
     this.loggedInUserName = this._dataService.loggedInUserName;
     this._dataService.getData(this.loggedInUserName)
   .subscribe((res: any) => {
-    console.log(res);
     for (let i = 0; i < res.length; i++) {
      this.dataSource.datasets[0].data[i] = res[i].maxbudget;
      this.dataSource.labels[i] = res[i].title;
@@ -43,7 +42,7 @@ export class MaxbudgetpieComponent implements OnInit {
   createChart(){
     var ctx : any = document.getElementById("maxbudgetpie")
     var myPieChart = new Chart(ctx,{
-        type: 'pie',
+        type: 'doughnut',
         data : this.dataSource
     })
 }
