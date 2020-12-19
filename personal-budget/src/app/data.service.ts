@@ -45,7 +45,7 @@ constructor(private http: HttpClient,public router: Router,private toastr: Toast
 getData(username): Observable<any> {
   const token = localStorage.getItem('accessToken');
   const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
-    this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
+    this.DataObservable = this.http.get('http://206.81.9.18:3000/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
     return this.DataObservable;
 }
 
@@ -53,7 +53,7 @@ addBudgetdata(data:BudgetSchema){
   const token = localStorage.getItem('accessToken');
   const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
   const body=JSON.stringify(data);
-  return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
+  return this.http.post('http://206.81.9.18:3000/budget',body,{'headers':headers});
 }
 
   private readonly MIN_ITEM = 10;
@@ -83,7 +83,7 @@ addBudgetdata(data:BudgetSchema){
     //console.log(this.getData(data["username"]))
     const headers = {'content-type': 'application/json'};
     const body=JSON.stringify(data);
-    return this.http.post('http://localhost:3000/users',body,{'headers':headers});
+    return this.http.post('http://206.81.9.18:3000/users',body,{'headers':headers});
   }
 
 
@@ -94,7 +94,7 @@ addBudgetdata(data:BudgetSchema){
   userLogin(data:UserSchema){
     const headers = {'content-type': 'application/json'};
     const body=JSON.stringify(data);
-    return this.http.post('http://localhost:3000/auth',body,{'headers':headers}).subscribe((res:any)=>{
+    return this.http.post('http://206.81.9.18:3000/auth',body,{'headers':headers}).subscribe((res:any)=>{
       this.userRecord['username'] = data.username;
       this.userRecord['password'] = data.password;
       this.loggedInUserName = data.username;
